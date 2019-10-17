@@ -1,0 +1,100 @@
+\subsection{L'histoire de l'intelligence artificielle}
+
+Maintenant que nous avons défini ce que l'on entend par le terme <<~Intelligence Artificielle~>>, nous allons voir l'historique des recherches et applications ayant pris place dans ce domaine et l'ayant fait progresser.
+
+\subsubsection{Avant l'intelligence artificielle (1943–1955)}
+
+Les premiers travaux qui sont aujourd'hui généralement reconnus comme portant sur l'intelligence artificielle sont ceux de Warren \textsc{McCulloch} et Walter \textsc{PittsAndreas}, en 1943 \cite{W_and_W}.
+Ils proposèrent un modèle de neurones artificiels, dans lequel chaque neurone peut être soit <<~on~>>, soit <<~off~>>, avec un passage au statut <<~on~>> s'effectuant en réponse à une stimulation de suffisamment de neurones voisins.
+Ils montrèrent également que toute fonction calculable\footnote{Une fonction calculable est une fonction semi-calculable qui est aussi totale, c'est-à-dire définie sur tout son domaine.} peut être calculée en utilisant un réseau de neurones connectés et que toutes les portes logiques\footnote{En électronique, les portes logiques s'appuient sur les principes de la logique binaire (0, 1), ce sont des circuits de base capables de représenter des fonctions logiques~:~et, ou, non, non-et, etc.} peuvent être implémentées par des réseaux simples.
+Ils suggérèrent aussi dans le même article qu'un réseau structuré convenablement serait capable d'apprendre.
+
+En 1949, dans son livre <<~The Organization of Behavior~>> \cite{hebb}, Donald \textsc{Hebb} introduit la règle de \textsc{Hebb}, celle-ci est souvent résumée comme suit~:~<<~cells that fire together, wire together~>>, autrement dit <<~des neurones qui s'excitent ensemble se lient entre eux.~>>.
+Elle est encore utilisée à ce jour, à la fois comme une hypothèse dans le domaine des neurosciences et comme un concept dans les réseaux neuronaux.
+
+En 1950, deux étudiants de l'université de \textsc{Harvard}, Marvin \textsc{Minsky} et Dean \textsc{Edmonds}, ont créé le premier ordinateur à réseau de neurones.
+La machine se nommait \textsc{Snarc} et permettait de simuler un réseau d'une quarantaine de neurones.
+L'objectif était que la machine apprenne le trajet d'un labyrinthe afin de le résoudre.
+
+Dès 1947, Alan \textsc{Turing} présentait déjà des séminaires sur le sujet de l'intelligence artificielle à la <<~London Mathematical Society~>>.
+En 1950 dans son livre <<~Computers and Thought~>> \cite{computer_and_thought}, Alan \textsc{Turing} introduit le test de \textsc{Turing}, le concept de <<~machine learning~>>, littéralement <<~l'apprentissage machine~>>, les algorithmes génétiques, ainsi que l'apprentissage par renforcement.
+Il proposa également l'idée de <<~child program~>>, visant à se focaliser sur la simulation d'un esprit enfant avant de vouloir simuler l'intelligence d'un adulte.
+Ces différents concepts sont les bases de beaucoup de recherches encore actuelles.
+
+\subsubsection{La naissance de l'intelligence artificielle (1956)}
+
+En 1956, le professeur John \textsc{McCarthy} convint Marvin \textsc{Minsky}, Claude \textsc{Shannon} et Nathaniel \textsc{Rochester} de l'aider à réunir des chercheurs intéressés par l'automatisation, les réseaux de neurones et l'étude de l'intelligence.
+Ils organisèrent alors une étude regroupant dix personnes sur deux mois, sur le sujet de l'intelligence artificielle au \textsc{Dartmouth} College, une université américaine \cite{modern_approach}.
+Le but était d'essayer de trouver comment permettre à une machine d'utiliser un langage, de faire preuve d'abstraction et de résoudre des problèmes jusqu'alors réservés aux humains.
+Cette étude n'a pas mené à de nouvelles avancées, en revanche elle a permis de créer le terme <<~Artificial Intelligence~>> pour définir ce domaine.
+Elle permit également à toutes les grandes figures de l'intelligence artificielle de cette époque de se rencontrer et pour les vingt années à venir, ce domaine fut largement dominé par ceux-ci, ainsi que par leurs étudiants.
+
+\subsubsection{Les premières grandes avancées (1952–1969)}
+
+Les avancées dans le domaine au cours des premières années de recherches furent nombreuses et très rapides, le nombre de problèmes qu'une machine était désormais capable de résoudre ne faisait qu'augmenter.
+
+Arthur \textsc{Samuel} débuta en 1952 le développement d'une série de programmes jouant aux échecs.
+Ceux-ci parvinrent à atteindre un niveau supérieur à beaucoup d'amateurs.
+Son programme parvint rapidement à apprendre à mieux jouer aux échecs que son propre créateur.
+Il infirma par cette occasion l'idée qu'un ordinateur ne peut faire que ce qu'on lui demande.
+Dans son livre, écrit en 1959 \cite{Samuel_1959}, il crée le terme <<~machine learning~>>.
+Il est aujourd'hui considéré comme l'un des principaux pionniers dans le domaine de la théorie des jeux et de l'intelligence artificielle.
+
+En 1959, Allen \textsc{Newell}, John C. \textsc{Shaw} et Herbert A. \textsc{Simon} créent le <<~General Problem Solver~>> \cite{newell_1959}.
+En principe, n'importe quel problème formalisé peut être résolu par le GPS, par exemple des preuves de théorèmes ou des parties d'échecs.
+Cet algorithme fut le premier à être conçu dans l'idée de penser comme un humain.
+
+En 1958, John \textsc{McCarthy} créa le langage de programmation de haut niveau, LISP.
+Il fut le langage dominant dans le domaine pour les trente années suivantes.
+
+\subsubsection{Les premières difficultés (1966–1973)}
+
+Les avancées dans le domaine étaient si rapides que Herbert A. \textsc{Simon} fit la prédiction en 1957 que dans moins de dix ans un programme serait capable de battre le champion du monde d'échecs.
+Cette prédiction s'est révélée vraie, bien que trop ambitieuse : il fallut attendre environ quarante ans pour cela et non dix.
+Cet excès de confiance était dû au fait qu'à ce moment les systèmes développés montraient des performances très prometteuses sur des exemples simples.
+Cependant, il s'avère que ces systèmes donnèrent de très mauvais résultats lorsqu'ils furent testés sur des problèmes plus complexes.
+
+Un exemple célèbre de cette observation concerne une recherche prenant lieu aux États-Unies en 1957 : le but était d'accélérer la traduction de documents russes en utilisant un algorithme de traduction.
+Le système développé était basé sur une présomption trop simpliste, alors qu'une traduction précise nécessite des connaissances permettant de résoudre l'ambiguïté et d'établir le sens d'une phrase.
+Cela donna une traduction célèbre dans le domaine de la traduction automatique.
+La phrase <<~the spirit is willing but the flesh is weak~>> (<<~l'esprit est fort mais le corps est faible~>>) fut traduite comme <<~the vodka is good but the meat is rotten~>> (<<~la vodka est bonne mais la chaire est pourrie~>>).
+En 1966, tous les financements des États-Unies pour la recherche en traduction furent stoppés, car aucune avancée importante n'avait eu lieu au cours des dernières années.
+
+En 1969, Arthur \textsc{Bryson} et Yu-Chi \textsc{Ho} \cite{bryson_ho} découvrirent plusieurs algorithmes de backpropagation\footnote{Rétropropagation du gradient, c'est une méthode de statistiques utilisée pour entraîner des réseaux de neurones}, énormément utilisés de nos jours, pour entraîner les réseaux de neurones.
+Cependant, en 1969 il était impossible de mettre en pratique ces algorithmes par manque de ressources de calculs, il fallut attendre des recherches dans la fin des années 1980 pour redécouvrir ces algorithmes et les mettre en pratique.
+
+\subsubsection{L'hiver de l'intelligence artificielle (1974–1980)}
+
+Le domaine connu une période durant laquelle le nombre de recherches diminua radicalement, principalement à cause du manque de financement.
+
+À ce moment le domaine faisait face à des critiques, du fait que les estimations des scientifiques travaillant sur le sujet s'étaient révélées trop ambitieuses.
+
+En 1969, Marvin \textsc{Minsky} publia le livre <<~Perceptrons~>> \cite{perceptrons}, dans lequel il expose ses doutes quant à l'avenir des systèmes de réseaux de neurones.
+Ce livre eut un tel effet dans le monde de la recherche que pour les dix années à venir il n'y eut plus de recherches effectuées sur le sujet.
+
+\subsubsection{Le retour de l'intelligence artificielle (1980-aujourd'hui)}
+
+Dans le milieu des années 1980, au moins quatre groupes de recherches indépendants réinventèrent la backpropagation, qui avait déjà été découverte en 1969 par Arthur \textsc{Bryson} et Yu-Chi \textsc{Ho} \cite{bryson_ho}.
+La technologie ayant beaucoup évoluée, il était désormais possible de mettre en pratique ces algorithmes.
+Depuis ce moment les scientifiques continuent à faire de fortes avancées sur ce sujet.
+
+Mais il était toujours compliqué de trouver des financements et c'est à partir de l'année 1993 que des avancées sur divers sujets de l'intelligence artificielle permirent au monde de l'industrie de s'y intéresser à nouveau.
+
+Dans les années 1990, le paradigme d'agents intelligents fait son apparition.
+Un agent intelligent est un système capable de percevoir son environnement et de choisir une action permettant de maximiser ses chances de succès.
+
+Le 11 mai 1997, Deep Blue devient le premier ordinateur à battre un champion du monde des échecs, Garry \textsc{Kasparov}.
+
+À cette époque beaucoup d'avancées en intelligence artificielle sont faites dans le monde de l'industrie, mais les chercheurs préfèrent employer d'autres termes pour qualifier leur travail, tels que << informatique >>, << systèmes cognitifs >> ou encore << Intelligence computationnelle >>.
+Cela s'explique par le fait que ces nouveaux noms rendaient les financements plus simples.
+Parmi ces grandes avancées, on peut compter l'engin de recherche de Google, l'apparition du data mining\footnote{La fouille de données, c'est l'extraction d'informations depuis une grande quantité de données brutes}, les robots industriels, les systèmes bancaires, etc.
+
+\subsubsection{Le deep learning et le big data (2011-aujourd'hui)}
+
+Les capacités des ordinateurs continuant à fortement augmenter et l'accès à de plus en plus de données firent apparaître le deep learning (apprentissage profond) et le big data.
+
+L'apprentissage profond permet un niveau d'abstraction élevé sur des données, grâce à l'utilisation de réseaux neuronaux profonds.
+Le principe est qu'en ajoutant des niveaux de neurones supplémentaires dans un réseau, celui-ci va permettre d'atteindre un niveau d'abstraction bien plus élevé et ainsi résoudre des problèmes beaucoup plus complexes.
+
+Le big data est un terme utilisé pour désigner un ensemble de données si imposant qu'il n'est plus possible de les analyser en tant qu'être humain.
+Il est alors nécessaire d'utiliser des méthodes de data mining afin de pouvoir visualiser et exploiter ces données.

@@ -1,0 +1,109 @@
+
+\subsection{Définition de l'intelligence}
+
+L'intelligence est souvent vue comme étant propre à l'être humain, on emploie d'ailleurs le terme <<~bête~>> pour désigner à la fois les animaux et les personnes que l'on considère comme ayant peu d'intelligence.
+
+Pourtant, on pourrait la définir comme étant la capacité à s'adapter à des situations nouvelles, ce qui permet de prendre en compte de nombreux comportements que l'on trouve chez les animaux, et même plus globalement chez les êtres vivants \cite{ia_pour_dev}.
+
+En exemple de cette capacité d'adaptation, on peut citer le cas de Hans le malin, un cheval qui <<~savait~>> compter et donnait le résultat d'un calcul par des coups de sabot sur le sol.
+En réalité, le cheval n'était en capacité ni de comprendre la question ni de calculer la réponse, mais il était capable de détecter les micro-expressions du public ou de son maître pour savoir quand s'arrêter de frapper.
+
+Une autre forme d'intelligence intéressante est l'intelligence collective, on la retrouve chez les humains, dans des mouvements de foule notamment, mais aussi chez beaucoup d'animaux et insectes.
+Les fourmis sont un autre très bon exemple avec la présence de rôles~:~reine, ouvrières, nourrices, gardiennes, combattantes, etc.
+
+Il existe encore beaucoup d'autres formes d'intelligences et toutes celles-ci sont très intéressantes à analyser et à imiter à l'aide de l'intelligence artificielle.
+Nous verrons plus en détail par la suite les mises en application possibles.
+
+\subsection{Définition de l'intelligence artificielle}
+
+Dans leur livre <<~Artificial Intelligence:~A Modern Approach~>> \cite{modern_approach}, Stuart J. \textsc{Russell} et Peter \textsc{Norvig}, deux acteurs importants de la recherche en intelligence artificielle, la définissent sous quatre aspects différents.
+
+Ces aspects opposent le fait de penser au fait d'agir et le fait de le faire humainement ou rationnellement.
+Ces quatre approches ont toutes été suivies par différentes personnes en employant des méthodes différentes dans leurs recherches.
+
+\FloatBarrier
+\begin{figure}[h!]
+    \begin{center}
+        \begin{tabular}{ |m{0.4\textwidth}|m{0.4\textwidth}| }
+            \hline
+            \textbf{Penser humainement} & \textbf{Penser rationnellement} \\
+            &\\
+            Système développé dans l'idée d'imiter la manière de penser humaine & Système développé dans l'idée de penser de manière rationnelle \\
+            \hline
+            \textbf{Agir humainement} & \textbf{Agir rationnellement} \\
+            &\\
+            Système développé dans l'idée d'agir comme un humain le ferait face à une même situation & Système développé dans l'idée d'agir de la manière la plus rationnelle possible \\
+            \hline
+        \end{tabular}
+    \end{center}
+    \caption{Quatre approches de l'intelligence artificielle}
+    \label{figure:ai_approaches}
+\end{figure}
+\FloatBarrier
+
+\subsubsection{Penser humainement, la science cognitive}
+
+Avant de pouvoir faire en sorte qu'un programme pense comme un être humain, il faut déjà être en mesure de déterminer comment un humain pense.
+
+Il y a trois manières pour cela~:~
+\\
+\begin{enumerate}
+    \item L'introspection~:~essayer d'analyser nos pensées et notre manière de penser.
+    \item L'expérimentation psychologique~:~observer une personne en action.
+    \item L'imagerie cérébrale~:~observer les stimuli d'un cerveau en action.
+\end{enumerate}
+~\\
+
+\subsubsection{Penser rationnellement, les lois de la pensée}
+
+Le philosophe \textsc{Aristote} fut le premier à réfléchir à ce qu'est <<~penser rationnellement~>>.
+Il est à l'origine du syllogisme qu'il définit comme <<~un discours dans lequel, certaines choses étant posées, quelque chose d'autre que ces données en résulte nécessairement par le seul fait de ces données~>> \cite{aristote}.
+
+Le syllogisme repose sur deux prémisses, une majeure et une mineure, desquelles on peut tirer une conclusion, par exemple~:~
+
+\begin{quote}
+    Majeure~:~\textsc{Socrate} est un homme.
+    
+    Mineure~:~Les hommes sont mortels.
+    
+    Conclusion~:~\textsc{Socrate} est mortel.
+\end{quote}
+
+\subsubsection{Agir humainement, le test de \textsc{Turing}}
+
+En 1950, dans son livre <<~Computer and thought~>> \cite{computer_and_thought}, Alan \textsc{Turing} décrit un test d'intelligence artificielle consistant à mettre un humain en confrontation, à l’aveugle, avec un ordinateur et un autre humain.
+Avec cet ouvrage il souhaitait remplacer la question <<~les machines peuvent-elles penser~?~>> par <<~un ordinateur digital peut-il tenir la place d'un être humain dans le jeu de l'imitation~?~>>, la première n'ayant que trop peu de sens pour mériter une discussion \cite{test_turing}.
+
+Le test se présente comme tel~:~
+
+\begin{quote}
+    Un être humain noté $C$ est confronté à l'aveugle à un ordinateur et un autre être humain, ces derniers sont notés $A$ et $B$ sans que $C$ ne sache ce qu'ils sont.
+    $C$ peut poser des questions à $A$ et $B$, ceux-ci répondent via un message écrit à l'ordinateur afin que le ton de la voix n'aide pas $C$.
+    Si $C$ n'est pas en mesure de déterminer lequel est humain ou non, l'ordinateur passe le test.
+    Les résultats de ce test ne dépendent pas de la capacité de l'ordinateur à donner de bonnes réponses, mais plutôt de la capacité à imiter les réponses d'un humain.
+\end{quote}
+
+Pour le moment, aucun programme n'est parvenu à passer ce test, il reste donc encore pertinent.
+Cependant, les chercheurs du domaine n'ont pas beaucoup cherché à passer ce test, préférant se concentrer sur l'étude des principes régissant l'intelligence plutôt que d'essayer d'imiter cette dernière.
+Effectivement, d'autres domaines scientifiques ont montré de gros progrès en appliquant cette méthode.
+Par exemple, c'est lorsque les frères \textsc{Wright} ont cessé d'essayer d'imiter les oiseaux et se sont concentrés sur le principe sous-jacent d'aérodynamique qu'ils sont parvenus à créer une machine volante.
+
+\subsubsection{Agir rationnellement, les agents rationnels}
+
+Un agent est, par définition, simplement quelque chose qui agit.
+Un agent rationnel se doit cependant de prendre les décisions qui sont supposées lui permettre de maximiser sa mesure de performance.
+Il doit également être en mesure d'agir de manière autonome, de percevoir son environnement et de persister sur une durée de temps prolongée sans nécessiter aucune aide extérieure.
+Contrairement à la catégorie <<~penser rationnellement~>>, ici l'agent n'est pas obligé de penser avant d'agir, il peut faire preuve de <<~réflexes~>> si cette action est la plus rationnelle.
+
+\subsubsection{Conclusion}
+
+Il existe donc des chercheurs qui pensent qu'une intelligence artificielle se doit de penser ou d'agir comme un être humain et d'autres que celle-ci doit penser ou agir rationnellement.
+Il n'est pas possible de dire lesquels ont raison, cela relève du débat philosophique et éthique.
+
+L'encyclopédie Larousse la définit comme <<~l'ensemble des théories et des techniques mises en œuvre en vue de réaliser des machines capables de simuler l'intelligence~>> \cite{def_larousse}.
+Cette définition est clairement basée sur le concept d'agir de manière humaine comme Alan \textsc{Turing} la définissait.
+
+L'intelligence en elle-même est un concept difficile à définir précisément, car celle-ci peut prendre de nombreuses formes.
+Il existe des tests qui tentent de mesurer l'intelligence, ce sont les tests de Q.I.
+Mais ceux-ci sont sujets à de fortes polémiques, car avec un entraînement spécifique une personne peut fortement améliorer ses scores à ce genre de tests.
+Il en va de même avec le test de \textsc{Turing} pour l'intelligence artificielle.

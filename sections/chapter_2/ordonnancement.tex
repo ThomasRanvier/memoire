@@ -1,0 +1,38 @@
+\subsection{Ordonnancement de phases de fabrication}
+
+Lors de mon apprentissage au sein de \textsc{Disa}, il m'a été confié la tâche de développer un module sur \textsc{Sigma} permettant de planifier toutes les tâches de production.
+La solution que j'ai développée n'est pas automatique, elle nécessite un travail manuel de placement de chaque phase par les responsables de production, dans cette section nous allons tenter de trouver une solution d'intelligence artificielle qui aurait pu me permettre d'automatiser ce processus.
+
+Le problème se présente ainsi~:~on a une liste d'ordres de fabrication (OF) à réaliser.
+Chacun possède une date de mise à disposition.
+Le but est évidemment de finir la production complète de l'OF avant celle-ci.
+Chaque OF est composé d'une liste de phases de fabrication qui doivent être réalisées sur des machines qui leur sont dédiées.
+Il faut donc organiser sur un planning toutes les phases de fabrication sur leur machine, le tout en prenant en compte un ordre de priorité sur les OF dont la date de mise à disposition est proche.
+
+Pour simplifier, on peut poser une liste de contraintes que les solutions devront respecter pour être valables.
+\\
+\begin{itemize}
+    \item[\tiny$\bullet$] Les phases doivent être ordonnancées sur les machines qui permettent leur fabrication.
+    \item[\tiny$\bullet$] Les phases ne peuvent pas se chevaucher sur une même machine.
+    \item[\tiny$\bullet$] Les phases d'un même ordre de fabrication doivent être réalisées dans l'ordre.
+    \item[\tiny$\bullet$] Pour commencer une phase, la précédente doit être terminée.
+    \item[\tiny$\bullet$] Toutes les phases doivent être incluses au sein de l'ordonnancement.
+\end{itemize}
+~\\
+
+Après de longues recherches, la solution relevant de l'intelligence artificielle semblant de loin la mieux adaptée à un problème d'ordonnancement est l'utilisation d'un algorithme génétique.
+
+Les algorithmes génétiques permettent de proposer des solutions à un problème en utilisant une simulation du concept de la sélection naturelle (voir la section \ref{section:ga} pour plus de détails).
+Comme il n'y a pas qu'une seule solution possible à un problème d'ordonnancement, l'utilisation de cette méthode pourrait être très efficace.
+
+L'idée serait donc de générer une population de manière pseudo-aléatoire, en s'assurant que chaque solution de cette population prenne en compte les contraintes définies précédemment.
+
+Les solutions de cette population ayant le plus de chances de se reproduire seraient celles avec un ordonnancement des phases laissant le moins de temps libre possible aux machines.
+Ainsi, en laissant tourner l'algorithme génétique et en s'assurant que toutes les solutions générées respectent les contraintes définies, on obtiendrait, à terme, un ensemble de solutions valables.
+Ces solutions peuvent être proposées au responsable de la production afin qu'il en sélectionne une qui lui convient.
+
+Le planning de fabrication pourrait alors être automatiquement mis à jour avec l'ordonnancement de phases choisi.
+Ce fonctionnement pourrait bien entendu être généralisé pour un usage en dehors du contexte de \textsc{Disa}.
+
+L'ordonnancement de tâches par l'intelligence artificielle est un domaine pour le moment très peu exploré.
+L'ordonnancement par des réseaux de neurones pourrait être un domaine de recherche intéressant, puisqu'aucune recherche ne semble avoir été menée sur ce sujet pour le moment \cite{ordo}.

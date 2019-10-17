@@ -1,0 +1,103 @@
+\subsection{Le service informatique}
+
+Le service informatique de \textsc{Disa} est d'effectif très restreint et sa composition a beaucoup évolué durant mes trois années d'apprentissage.
+
+Les deux premières années, M. Florent \textsc{Palier} en était le responsable. 
+Il fut responsable du service informatique de \textsc{Disa} de 2001 jusque fin 2018 avant de devenir un employé de \textsc{DisaTech} après son rachat par AkzoNobel.
+En préparation de son départ, M. Nicolas \textsc{Stecleboute} fut recruté en septembre 2018 et formé par Florent \textsc{Palier} pour devenir le nouveau responsable du service.
+
+À mon arrivée au sein de \textsc{Disa}, en septembre 2016, le service comprenait M. \textsc{Palier}, ainsi qu'un autre apprenti, Alexandre \textsc{Meunier}.
+Celui-ci était étudiant en dernière année de master à l'école 3iL Academy.
+Durant les mois de mai et juin 2017, le service comprit aussi un stagiaire étudiant en informatique à l'IUT de Limoges, Jeremy \textsc{Coudert}.
+Florent \textsc{Palier} avait souvent recours à des apprentis et stagiaires lorsque la charge de travail du service était plus haute.
+
+En septembre 2017, Alexandre \textsc{Meunier} termina son apprentissage au sein de \textsc{Disa}, nous n'étions ensuite plus que deux avec M. Florent \textsc{Palier}.
+
+Depuis mon retour de ma mobilité en Suède, en janvier 2019, nous sommes deux au service informatique avec Nicolas \textsc{Stecleboute}.
+Florent \textsc{Palier} reste mon tuteur en entreprise, même s'il ne fait techniquement plus partie de \textsc{Disa}.
+Il travaille désormais de son côté pour \textsc{DisaTech}.
+Cependant il participe toujours au projet \textsc{Sigma}, le projet principal du service sur ces trois dernières années, qui consiste en la création d'un nouvel ERP\footnotemark.
+\footnotetext{ERP~:~Enterprise Ressource Planning, détaillé dans la partie <<~Le projet \textsc{Sigma}~>>}
+Il est en train de préparer une version de \textsc{Sigma} pleinement adapté à sa compagnie afin que cette version ne dépende plus de celle de \textsc{Disa}.
+
+Les membres du service informatique s'assurent du bon fonctionnement du système d'information de la compagnie.
+Nous sommes responsables du matériel informatique, des télécommunications, du réseau, des serveurs, ainsi que de tous les logiciels et les applications utilisées par les employés de la compagnie.
+À ce travail quotidien s'ajoute le développement de nouveaux outils informatiques destinés à améliorer les conditions de travail de nos collaborateurs.
+
+\subsubsection{L’infrastructure matérielle}
+
+Le parc informatique de \textsc{Disa} est principalement constitué de PC fonctionnant sous Windows 10 ou des versions plus anciennes.
+Les membres du pôle d'infographie sont les seuls n'utilisant pas Windows.
+Ils utilisent des Mac et ont également leurs propres serveurs de stockage réservés à leur service.
+Chaque employé en ayant le besoin possède un téléphone relié au réseau interne de la compagnie.
+
+En 2014, \textsc{Disa} a fait l'acquisition d'un mini data center, un PowerEdge VRTX, système permettant notamment la virtualisation de serveurs et le stockage de données.
+Ainsi, tous les serveurs de la compagnie sont centralisés sous cette machine, il regroupe~:~
+\\
+\begin{itemize}
+    \item[\tiny$\bullet$] Quatre disques de 1To servant pour le stockage des données des serveurs partagés.
+    \item[\tiny$\bullet$] Un serveur Windows Server 2010 qui héberge Sage, le logiciel servant à la comptabilité.
+    \item[\tiny$\bullet$] Un serveur sous Linux permettant la réalisation de tâches planifiées.
+    \item[\tiny$\bullet$] Un serveur web hébergeant l'intranet.
+    \item[\tiny$\bullet$] Un serveur de test pour le développement du nouvel ERP \textsc{Sigma}.
+    \item[\tiny$\bullet$] Un serveur de production pour le déploiement et l'utilisation de \textsc{Sigma}.
+\end{itemize}
+~\\
+
+Toutes les données sur les disques du VRTX sont protégées par un système RAID 5, ce système répartit les données sur plusieurs disques de manière à pouvoir récupérer toutes les informations même si un disque venait à tomber en panne.
+
+Pour le moment, la compagnie \textsc{DisaTech} est encore reliée au réseau de \textsc{Disa} par l'intermédiaire d'un canon Wi-Fi, car l'accès au serveur de stockage de \textsc{Disa} leur est encore nécessaire.
+Cependant dès lors que le réseau et la gestion des serveurs du côté de \textsc{DisaTech} seront entièrement opérationnels et indépendants, cette connexion n'aura plus lieu d'être et sera supprimée.
+
+\subsubsection{L'environnement logiciel de \textsc{Disa}}
+
+L'environnement logiciel de la compagnie a évolué durant mon apprentissage et est encore en cours de mutation.
+Nous sommes en train de développer un nouvel ERP pour l'entreprise, nommé \textsc{Sigma}, l'objectif de ce projet est de fournir un outil unique aux employés afin de faciliter les liens entre chaque étape de la fabrication.
+
+Actuellement, les employés utilisent principalement \textsc{Sigma} pour leur travail.
+En parallèle, ils utilisent encore ASAP (l'ancien ERP qui vise à être remplacé) pour effectuer des tâches qui n'ont pas encore été implémentées sous \textsc{Sigma}.
+L'intranet de l'entreprise, \textsc{Disanet}, est encore utilisé par certains employés au même titre qu'ASAP, afin d'effectuer des tâches pour le moment non réalisables sous \textsc{Sigma}.
+Pour la comptabilité, le logiciel \textsc{Sage} est utilisé, celui-ci est un logiciel propriétaire, nous ne pouvons donc pas le modifier.
+\\
+\begin{itemize}
+    \item[\tiny$\bullet$] \textbf{ASAP~:}~C'est l'ERP utilisé à \textsc{Disa} depuis l'année 2002, jusqu'au passage sous \textsc{Sigma}.
+    Permettant la gestion complète de tous les flux internes de \textsc{Disa}, il est devenu rapidement indispensable pour gérer la production dans de bonnes conditions depuis son installation.
+    
+    Cependant, avec le temps, des besoins non gérés par ce dernier sont apparus et c'est pourquoi en 2006 un intranet fut créé.
+    
+    \item[\tiny$\bullet$] \textbf{\textsc{Disanet}~:}~C'est l'intranet de l'entreprise, il fut créé en 2006 par un stagiaire de l'école 3iL.
+    Dans un premier temps, \textsc{Disanet} fut vu comme une opportunité permettant de combler les manques d’ASAP.
+    
+    C’est pour cela que, depuis sa création, une centaine d'applications ont été développées sur ce support~:~il est donc devenu un complément indispensable d’ASAP.
+    Désormais, le nombre d'applications sur \textsc{Disanet} est tel que les employés sont constamment amenés à passer de \textsc{Disanet} à ASAP et inversement, ce qui ne facilite pas leur travail.
+    
+    C’est pour cette raison que M. \textsc{Palier} a décidé de commencer le projet \textsc{Sigma} en 2016.
+    Ce dernier vise à centraliser toutes les applications métiers, actuellement éparpillées entre l’ERP et l’intranet, au sein d’un unique outil.
+    M. \textsc{Palier} souhaite donc que l’intranet retrouve un rôle de communication plutôt qu’un rôle applicatif et que nous cessions d'utiliser ASAP.
+    
+    \item[\tiny$\bullet$] \textbf{\textsc{Sigma}~:}~Depuis la fin de l'année 2018, les employés ont commencé à utiliser ce nouvel ERP quotidiennement.
+    Le passage à l'utilisation de celui-ci s'est fait progressivement afin d'avoir le temps de former les employés à l'utilisation de l'outil et de ne pas générer une affluence de problèmes à résoudre trop importante.
+    Cette migration a continué durant quelques mois.
+    Désormais, les employés ayant encore besoin d'utiliser ASAP et \textsc{Disanet} sont rares.
+    Il reste encore des applications à développer et intégrer sur \textsc{Sigma} et d'autres à corriger et/ou améliorer (ce travail est en cours).
+    
+    \item[\tiny$\bullet$] \textbf{SFAO~:}~Avant l'utilisation de \textsc{Sigma}, les ouvriers utilisaient la SFAO~:~Suivi de Fabrication Assisté par Ordinateur.
+    Cet outil permettait de superviser la production et de garder un historique de la fabrication.
+    Concrètement, il permettait de savoir quel salarié avait travaillé sur chaque tache de fabrication.
+    Il permettait aussi de récupérer des informations permettant de générer des statistiques sur le processus de production et de gérer plus facilement les soucis rencontrés par les ouvriers.
+    
+    Cet outil est désormais entièrement intégré au sein de \textsc{Sigma}, l'ancien système n'est plus utilisé du tout.
+\end{itemize}
+~\\
+
+\subsubsection{Mon rôle au sein du service}
+
+Durant mes trois années d'apprentissage, la tâche principale qui m'a été confiée est la participation à la conception, au développement et à la mise en place du projet \textsc{Sigma}.
+C'est un projet de grande ampleur, et travailler sur les différentes phases de celui-ci m'a permis de découvrir de nombreux aspects différents du travail de développeur et de chef de projet.
+
+Mon quotidien fut globalement découpé entre l'analyse des besoins des futurs utilisateurs de \textsc{Sigma} et le développement d'applications adaptées pour leur permettre de travailler le plus simplement possible.
+Une fois la mise à disposition de \textsc{Sigma} aux employés, s'en est suivi une période focalisée sur la résolution de bugs et l'amélioration des applications afin de les faire mieux correspondre aux besoins de chacun.
+
+En plus de ce travail quotidien, je porte aussi assistance aux employés lorsqu'ils rencontrent des problèmes informatiques.
+
+L'effectif très réduit du service oblige souvent à être confronté à des problèmes jamais rencontrés auparavant et sollicite la mise en application de compétences variées~:~cela favorise la polyvalence.

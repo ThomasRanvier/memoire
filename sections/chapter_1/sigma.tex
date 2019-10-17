@@ -1,0 +1,145 @@
+\section{Le projet \textsc{Sigma}}
+
+\subsection{Pourquoi ce projet~?}
+
+Le mode de fonctionnement utilisé au sein de la compagnie depuis la création de \textsc{Disanet} présentait plusieurs défauts.
+En effet, certaines applications de l'intranet utilisent des bases de données indépendantes.
+En plus de cela, il n'était pas toujours possible de travailler sur la base de données d'ASAP depuis l'intranet et inversement.
+Cela rendait les liens complexes et obligeait les employés à saisir plusieurs fois certaines données.
+
+De plus, ASAP est un système vieillissant qui se montrait de moins en moins adapté aux besoins modernes de \textsc{Disa}.
+Compenser ses défauts par la création d'applications sous \textsc{Disanet} n'était donc plus une solution viable.
+Le principal défaut de cet ERP résidait dans le fait qu'il était fourni par une société tierce.
+Car, bien qu'il soit possible d'effectuer des modifications, et donc d'ajouter du contenu à ASAP, c'est une solution non viable à long terme, notamment à cause de la gestion des mises à jour et de l’ancienneté du code déjà existant.
+
+L'entreprise était donc dans le besoin d'un nouvel outil, plus performant, plus rapide et plus simple d'utilisation.
+Pour répondre à cette problématique, M. \textsc{Palier} avait deux principales solutions~:~
+\\
+\begin{itemize}
+    \item[\tiny$\bullet$] La première étant de recourir à un ERP développé par une entreprise tierce.
+    Le souci étant que cela voulait dire se confronter à nouveau aux mêmes problèmes qu'avec ASAP sur le long terme.
+    \item[\tiny$\bullet$] La seconde solution étant de développer en interne un nouvel ERP parfaitement adapté aux besoins de chacun.
+    Le principal défaut de cette solution étant bien sûr, une charge de travail conséquente pour le service informatique pour les années à venir.
+\end{itemize}
+~\\
+
+En 2016, Florent \textsc{Palier} décida de développer le nouvel ERP en interne afin de pouvoir s'assurer que celui-ci soit adapté aux besoins spécifiques des employés et qu'il soit possible de le faire évoluer facilement.
+
+Le projet fut nommé \textsc{Sigma}.
+L'objectif était donc de créer un outil unique permettant de regrouper tous les besoins des employés et ainsi remplacer ASAP, toutes les applications de \textsc{Disanet} et la SFAO.
+Cet outil se reposera sur une unique base de données, ainsi les liens entre chaque application seront faits automatiquement et le suivi d'un même dossier au sein de la compagnie pourra être effectué sans obliger à la saisie redondante d'informations.
+
+Le fait que tous les employés travaillent tous sur le même outil est aussi beaucoup plus simple à gérer d'un point de vue informatique, une seule technologie est utilisée pour le développement, ce qui rend la maintenance plus simple.
+
+\subsection{Environnement de développement}
+
+\subsubsection{Outils utilisés}
+
+Pour ce projet, M. Palier a décidé de travailler sous WinDev.
+WinDev est un atelier de génie logiciel qui utilise son propre langage de programmation~:~le Wlangage.
+C’est un langage de quatrième génération, ce qui signifie qu’il est assez proche d’une langue naturelle.
+Cela permet de développer des applications bien plus rapidement qu’avec des langages plus classiques tels que le PHP.
+L’utilisateur de WinDev peut également se passer de la programmation pour les fonctionnalités les plus simples.
+Par exemple, pour la création d’une liste déroulante dont les données proviennent d’un fichier de la base de données, il suffit de renseigner la source de données et le lien se fait automatiquement.
+
+WinDev présente une interface graphique sur laquelle il est possible de placer de nombreux éléments (Boutons, champs de saisie, sélecteurs, tables, etc.) par drag and drop\footnote{Glisser-déposer.}.
+Il est donc très simple et rapide de créer des mock-ups\footnote{Maquette d'une interface utilisateur servant de support pour une présentation.} afin de se représenter une fenêtre future et de pouvoir la présenter aux futurs utilisateurs.
+
+Afin d’organiser le développement entre plusieurs développeurs et d’éviter les conflits de versions de fichiers lors de modifications en simultanés, nous utilisons le gestionnaire de sources intégré à WinDev.
+Celui-ci permet d’extraire un élément du projet.
+Lorsqu’un élément est extrait en mode exclusif les autres développeurs ne peuvent pas effectuer de modifications sur le fichier.
+Lorsque nous avons terminé nos modifications au sein du fichier, nous réintégrons l’élément au projet, les autres développeurs peuvent alors utiliser l’élément modifié.
+Il en va de même pour la gestion de la base de données, il est nécessaire d’extraire la base avant de pouvoir appliquer des modifications.
+Un tel gestionnaire permet de développer sans conflit de versions de fichiers.
+Il garde également un historique des accès et de toutes les modifications effectuées sur n’importe quel fichier, permettant un retour en arrière instantané si nécessaire.
+
+\subsubsection{Architecture client lourd-serveur}
+
+Le modèle client-serveur est une architecture d'application utilisant un réseau pour l'échange de données.
+Il permet de répartir les traitements et le stockage des données sur les serveurs et/ou les clients.
+Dans cette architecture, un client est l'entité que représente un utilisateur utilisant l'application.
+
+C'est ce modèle qui fut choisi pour l'ERP \textsc{Sigma}, les données sont enregistrées sur un serveur dédié à cet effet, sur lequel est installé une base de données HFSQL\footnote{Le type HFSQL, ou HyperFileSQL, est le type de base de données utilisé par WinDev.}.
+L’avantage principal du modèle client-serveur est qu’il permet de n’enregistrer aucune donnée sur les postes client.
+Cela permet aux utilisateurs de l’application de pouvoir se connecter sur leur session depuis n’importe quel terminal et de retrouver exactement les mêmes informations.
+C'est notamment un très gros avantage pour les ouvriers utilisant la SFAO intégrée à \textsc{Sigma} lorsqu'ils sont amenés à se déplacer sur un autre poste dans l'usine.
+
+Cette architecture permet aussi une gestion des mises à jour simple.
+Lorsque l'application est démarrée sur un poste, la version de celle-ci est comparée avec celle du référentiel stocké sur le serveur.
+Si les deux versions ne coïncident pas, l'application locale du poste est mise à jour automatiquement.
+
+De plus nous utilisons aussi une architecture client lourd, cela signifie que les calculs nécessaires à l'utilisation de l'outil sont effectués sur le poste de l'utilisateur et non sur le serveur.
+L'avantage est évidemment de soulager la charge de travail du serveur, sachant que les ordinateurs des employés utilisés à \textsc{Disa} sont récents et bien assez performants pour supporter cette charge.
+
+\subsection{La conception théorique de \textsc{Sigma}}
+
+Avant d'amorcer le développement du nouvel ERP, le service informatique s'est concentré sur sa conception.
+Il fallait déterminer une approche viable pour que la réalisation d'un tel projet ne se termine pas par un échec, ce qui est courant pour un projet d'une telle ampleur.
+Ce travail débuta en juin 2016, le service informatique était alors constitué de M. Florent \textsc{Palier}, Clément \textsc{Martaille}, apprenti ingénieur et d'Alexandre \textsc{Meunier}, apprenti en master.
+
+\subsubsection{Récolte et analyse des besoins des futurs utilisateurs}
+
+La première étape fut de récolter, puis d'analyser les besoins des divers employés de \textsc{Disa}.
+Lors de cette étape, il est crucial de tenter de mettre en situation les employés afin d'obtenir une formulation du besoin la plus concrète possible.
+Il faut donc revenir vers eux plusieurs fois pour leur poser des questions diverses sur leur travail quotidien afin de s'assurer que leurs idées et besoins n'entrent pas en conflit.
+Si l'on détecte des incohérences à ce moment, il est indispensable de les faire remarquer aux employés afin de réfléchir à une solution convenable.
+Cette étape est indispensable, car il arrive souvent que les attentes d'une personne soient assez abstraites et que l'on s'aperçoive à la fin du développement que le produit conçu ne leur convient pas.
+
+M. \textsc{Palier} s'est entretenu avec les responsables de chaque service de l'entreprise afin qu'ils lui fassent part de leurs besoins et de leurs attentes quant à ce nouvel outil.
+L'objectif n'était pas de générer un énorme cahier des charges, mais plutôt de noter un maximum d'idées et de suggestions.
+
+Après l'annonce du développement d'un nouvel ERP, de nombreux employés firent parvenir des requêtes au service informatique.
+Clément \textsc{Martaille} et Alexandre \textsc{Meunier} développèrent alors un outil de type <<~boîte à idées~>> sur l'intranet pour que chacun puisse y inscrire ses demandes.
+
+\subsubsection{Choix de la méthode de travail}
+
+Pour le développement d'un projet aussi vaste, la création d'un cahier des charges complet et final demanderait trop de temps.
+Pour cette raison, et afin de pouvoir répondre aux besoins de chacun de la manière la plus souple possible, il fut décidé d'adopter une démarche itérative incrémentale.
+
+Cette démarche est fortement inspirée des méthodes agiles~:~elle combine le développement itératif au développement incrémental dans l'objectif de ne garder que les côtés positifs des deux.
+\\
+\begin{itemize}
+    \item[\tiny$\bullet$] Le développement incrémental s'appuie sur une idée parfaitement définie, on construit ensuite le produit final morceau par morceau.
+    On ne peut présenter le produit qu'une fois terminé puisque celui-ci n'est pas fonctionnel avant le dernier moment.
+    En théorie, cette méthode est simple et fonctionnelle, cependant dans la réalité, comme précisé plus haut, les besoins des utilisateurs ne sont jamais aussi clairs qu'on le pense.
+    Sachant cela on peut vite comprendre que présenter le produit à l'utilisateur seulement lorsque celui-ci est terminé à 100\% n'est pas une idée viable.
+    
+    \item[\tiny$\bullet$] Le développement itératif part d'une idée grossière à partir de laquelle on peut construire un mock-up à présenter à l'utilisateur.
+    Si la maquette ne plaît pas à l'utilisateur, on peut alors la modifier afin de l'adapter à ses besoins.
+    Ensuite, ce processus recommence jusqu'à l'obtention d'un produit satisfaisant.
+    Cette méthode est bien plus réalisable dans la pratique, elle met l'accent sur l'approbation de l'utilisateur.
+    
+\end{itemize}
+~\\
+
+En alliant ces deux méthodes, on obtient une démarche permettant de se baser sur les retours des utilisateurs tout en prenant des libertés afin de limiter leur implication.
+Cette démarche est aussi très similaire à la méthode XP, Extreme Programming, celle-ci est particulièrement orientée sur l'aspect réalisation du projet sans pour autant négliger l'aspect gestion de projet.
+Cette méthode, tout comme la méthode itérative incrémentale, est adaptée aux équipes réduites avec des besoins changeants et s'appuie beaucoup sur le retour des futurs utilisateurs.
+
+Pour pouvoir mettre en place cette méthode, le développement de \textsc{Sigma} doit donc s'effectuer sous forme de modules, chaque module étant composé de plusieurs applications.
+Cela permet de récolter les besoins des utilisateurs de manière quasiment individuelle et de pouvoir se consacrer pleinement aux besoins de quelques employés en même temps tout au plus.
+
+Un désavantage de cette méthode est que l'on développe les applications les unes après les autres, il faut donc faire attention à anticiper les liens et besoins que de futurs applications ou modules pourront avoir avec les applications en cours de développement.
+L'étape de récupération des besoins de manière globale, réalisée par M. \textsc{Palier}, fut très utile pour ce genre d'anticipation, si elle n'avait pas été effectuée nous aurions eu de gros soucis et de nombreuses applications à modifier pour prendre en compte des besoins non anticipés.
+
+\subsubsection{Proposition des fonctionnalités}
+
+Après la phase de récupération des besoins et le choix de la méthode de travail, M. \textsc{Palier} et les apprentis proposèrent une liste non exhaustive des modules à développer.
+\\
+\begin{itemize}
+    \item[\tiny$\bullet$] Gestion commerciale
+    \begin{itemize}
+        \item[\tiny$\bullet$] Gestion des clients et des prospects (CRM~:~gestion de la relation client)
+        \item[\tiny$\bullet$] Gestion des commandes client
+        \item[\tiny$\bullet$] Gestion des devis
+    \end{itemize}
+    \item[\tiny$\bullet$] Gestion des achats
+    \item[\tiny$\bullet$] Gestion des ressources humaines
+    \item[\tiny$\bullet$] Données techniques
+    \item[\tiny$\bullet$] Outils comptables
+    \item[\tiny$\bullet$] Suivi de la production (SFAO et statistiques)
+    \item[\tiny$\bullet$] Gestion des stocks et inventaires
+    \item[\tiny$\bullet$] Logistique
+    \item[\tiny$\bullet$] Gestion des processus qualité
+    \item[\tiny$\bullet$] Maintenance
+\end{itemize}

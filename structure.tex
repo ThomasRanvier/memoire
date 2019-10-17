@@ -1,0 +1,56 @@
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\graphicspath{{images/}}
+\usepackage{url}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{placeins}
+\usepackage{setspace}
+\usepackage{abstract}
+\usepackage[T1]{fontenc}
+\usepackage[top=2cm, bottom=2cm, left=2cm, right=2cm, includeheadfoot, headheight=64.45882pt]{geometry}
+\usepackage{subfig}
+\usepackage{lipsum}
+\usepackage{fancyhdr}
+\usepackage{wrapfig}
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{4}
+\usepackage{xcolor,sectsty}
+\usepackage{tikz}
+\usepackage{bchart}
+\usepackage{tabu}
+\usepackage[rightcaption]{sidecap}
+\usepackage[bottom]{footmisc}
+\usepackage{hyperref}
+\usepackage{lastpage}
+
+% Colors
+\definecolor{col_title}{RGB}{101, 6, 30}
+\definecolor{col_chapters}{RGB}{128, 24, 47}
+\definecolor{col_sections}{RGB}{155, 43, 65}
+\definecolor{col_sub}{RGB}{182, 62, 83}
+\definecolor{col_subsub}{RGB}{210, 81, 101}
+\chapterfont{\color{col_chapters}}
+\sectionfont{\color{col_sections}}
+\subsectionfont{\color{col_sub}}
+\subsubsectionfont{\color{col_subsub}}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+\newcommand{\sujet}{Qu'est-ce que l'intelligence artificielle peut apporter à un ERP~?}
+
+% Redefine the plain page style
+\fancypagestyle{plain}{%
+    \fancyhf{}%
+    \renewcommand\headrulewidth{0.5pt}
+    \fancyhead[L]{\includegraphics[]{logo_3il}}
+    \fancyhead[C]{}
+    \fancyhead[R]{\includegraphics[]{logo_disa}}
+    \renewcommand\footrulewidth{0.5pt}
+    \fancyfoot[L]{Thomas \textsc{Ranvier}}
+    \fancyfoot[C]{\sujet}
+    \fancyfoot[R]{\thepage/\pageref*{LastPage}}
+}
+\pagestyle{plain}

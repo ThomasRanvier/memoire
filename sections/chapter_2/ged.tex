@@ -1,0 +1,104 @@
+\subsection{Gestionnaire Électronique des Documents}
+
+Au sein d'un ERP, il est très courant de rencontrer un système de gestion électronique des documents, dont le rôle est de gérer les documents électroniques de la compagnie.
+Nous avons d'ailleurs développé une GED au sein de \textsc{Sigma} au cours de mon apprentissage.
+
+Il existe quatre étapes majeures dans la gestion électronique des documents~:~acquisition, traitement, stockage et diffusion.
+\\
+\begin{itemize}
+    \item[\tiny$\bullet$] L'acquisition des documents au sein de la GED peut s'effectuer par l'intégration de documents préalablement scannés, ou par la production automatique de documents via un logiciel.
+    \item[\tiny$\bullet$] Le traitement des documents consiste en leur indexation. C'est la description du document qui permettra de le retrouver facilement par la suite.
+    \item[\tiny$\bullet$] Le stockage des documents doit être effectué sur un support prenant en compte le volume potentiel de documents que la GED devra gérer dans le futur, il doit être sécurisé de manière à garantir la sécurité des données.
+    \item[\tiny$\bullet$] La diffusion des documents doit permettre aux utilisateurs de retrouver les documents dont ils ont besoin facilement et rapidement.
+\end{itemize}
+~\\
+
+Différentes utilisations de l'intelligence artificielle peuvent intervenir lors de ces quatre étapes afin d'améliorer les capacités d'une GED.
+
+\input{sections/chapter_2/classification}
+
+\input{sections/chapter_2/clustering}
+
+\subsubsection{Extraction de données pour saisie automatique}
+
+Il est très courant que des employés aient besoin de saisir dans un système informatique des informations qu'ils ont devant eux, sous format papier ou numérique.
+Cependant, il existe des méthodes qui peuvent permettre d'automatiser la saisie de ces données simplement en important un fichier au sein du système.
+
+La compagnie \textsc{Rossum}, fondée en 2017, a créé l'outil ELIS.
+L'utilisation de cet outil est simple, on y importe une facture et l'outil est capable d'analyser automatiquement la structure de celle-ci afin d'extraire les informations utiles et de les ajouter directement au sein d'une base de données.
+Afin de rester compétitive, l'entreprise ne dévoile pas le fonctionnement de son logiciel, mais il est intéressant d'imaginer les méthodes d'intelligence artificielle employées.
+
+Cette section est dédiée à la conception d'un système, inspiré d'ELIS, qui serait capable de gérer plusieurs types de documents.
+
+Les différentes étapes au sein de ce système seraient les suivantes.
+\\
+\begin{enumerate}
+    \item Détection automatique du type de document. Si la nature du document est mal déterminée, l'outil permet à l'utilisateur de le corriger. Après une correction de la part d'un utilisateur le système apprend de son erreur afin de continuellement s'adapter aux nouveaux documents importés.
+    
+    \item Analyse de la structure du document. Ici l'outil annote sur le document les zones correspondantes aux informations à récupérer. L'utilisateur peut le corriger, ce qui permet encore une fois un apprentissage à partir des erreurs.
+    
+    \item Application d'une méthode de reconnaissance de caractères afin de lire les informations présentent dans les zones délimitées à l'étape précédente.
+    
+    \item Enregistrement des informations directement en base de données.
+\end{enumerate}
+~\\
+
+On peut voir ci-dessous un aperçu du fonctionnement de l'outil ELIS qui relie chaque champ à la zone du document détectée comme correspondante.
+
+\FloatBarrier
+\begin{figure}[h!]
+    \begin{center}
+        \includegraphics[width = 0.9\textwidth]{detection_structure_facture}
+    \end{center}
+    \caption{Analyse de la structure d'une facture avec correction manuelle possible, avec l'outil ELIS}
+    \label{figure:detection_structure_facture}
+\end{figure}
+\FloatBarrier
+
+\paragraph*{Détection automatique du document}
+~\\
+
+Lorsque l'on parle de détection automatique de la nature du document, on parle en fait de classification, l'utilisation d'une des méthodes décrites précédemment est donc tout à fait envisageable dans ce cas.
+
+\paragraph*{Analyse de la structure du document}
+~\\
+
+Nous avons vu précédemment que traiter un document en tant qu'image était plus complexe que d'en extraire le texte brut.
+Cela est vrai, mais le traitement en tant qu'image offre beaucoup plus de possibilités et n'entraîne aucune perte d'informations dans le processus.
+Comme nous voulons ici analyser la structure du document, il faut le traiter sous sa forme initiale, sous forme d'image.
+Pour réaliser cette analyse, il va donc être nécessaire d'utiliser des méthodes avancées d'apprentissage profond.
+
+Comme précisé auparavant, ce sont les réseaux de neurones à convolution qui donne les meilleurs résultats concernant la reconnaissance d'images, la détection d'objet au sein d'une image et la segmentation d'images.
+Ce que nous voulons réaliser s'apparente à une détection d'objet au sein d'une image, où les objets à détecter correspondent aux zones où se trouvent les informations à extraire.
+
+Il existe plusieurs manières de détecter et identifier des objets.
+Le système de détection YOLO (You Only Look Once) est actuellement le plus performant dans le domaine \cite{yolo}.
+Il permet de gérer la détection d'objets au sein d'une image ainsi que leur classification, grâce à un réseau de neurones à convolution, en une seule étape.
+Auparavant, il fallait utiliser deux réseaux de neurones à convolution, l'un pour détecter les limites des objets, l'autre pour classifier chaque objet détecté, un par un.
+Le système YOLO est si efficient qu'il permet d'effectuer de la reconnaissance d'objets sur une vidéo en temps réel, à un rythme allant jusqu'à 45 images par secondes.
+
+L'avantage de YOLO, qui pourrait permettre son fonctionnement dans notre cas, est qu'il identifie chaque objet en se basant sur l'image complète, ce qui lui permet de prendre en compte tout le contexte.
+Pour comprendre qu'une zone spécifique d'un document est importante et savoir quelles informations on peut y trouver, il est nécessaire que le système considère le document dans sa globalité.
+
+Les systèmes permettant la reconnaissance d'objets au sein d'une image ne sont pas pleinement adaptés à la reconnaissance de certaines zones d'un document.
+L'adaptation du système YOLO à notre cas de figure nécessiterait donc une recherche approfondie du sujet.
+Si l'adaptation est possible, le résultat serait donc un système permettant de détecter automatiquement  les zones du document à récupérer et de corréler chaque zone détectée avec le champ correspondant au sein de la base de données.
+
+Une fois la détection et l'attribution des zones effectuée par le système, l'utilisateur doit avoir la main afin de pouvoir vérifier qu'elles sont bien placées et si ce n'est pas le cas, les déplacer manuellement.
+Une correction effectuée par l'utilisateur aurait pour effet de venir en complément des données d'entraînement du système et ainsi lui permettre de s'adapter aux nouveaux documents.
+
+\paragraph*{Lecture des informations et importation en base}
+~\\
+
+Une fois les zones détectées et attribuées aux champs de la base de données correspondants, l'étape restante est la lecture des informations, puis leur importation au sein de la base.
+La lecture peut s'effectuer grâce à une méthode de reconnaissance optique de caractères.
+Comme précisé auparavant, ces méthodes existent depuis un long moment et peuvent être mises en place en une simple ligne de code.
+L'importation en base des informations ainsi extraites peut ensuite être effectuée.
+
+\paragraph*{Conclusion}
+~\\
+
+Si l'on pouvait mettre en place un tel système au sein de \textsc{Sigma}, le travail de la comptabilité serait facilité.
+Le temps actuellement passé à la saisie des données, ainsi qu'à la vérification des concordances entre les commandes et les factures serait énormément réduit.
+
+Bien sûr, il faut garder à l'esprit qu'il a fallu une équipe de plus de 15 développeurs et experts en intelligence artificielle à la compagnie \textsc{Rossum} pour effectuer les recherches, puis développer un outil comparable.
